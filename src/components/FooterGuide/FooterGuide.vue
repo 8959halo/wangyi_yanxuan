@@ -5,20 +5,22 @@
         <i class="u-icon" :class="$route.path === '/' ? 'u-icon-tabBar-index-active' : 'u-icon-tabBar-index'"></i>
         <span class="text">首页</span>
       </li>
-      <li class="item" :class="{active: $route.path === '/category'}" @click="goTo('/category')">
-        <i class="u-icon" :class="$route.path.includes('/cate') ? 'u-icon-tabBar-cate-active' : 'u-icon-tabBar-cate'"></i>
+      <li class="item" :class="{active: $route.path ==='/cate'}" @click="goTo('/cate')">
+        <i class="u-icon" :class="$route.path ==='/cate' ? 'u-icon-tabBar-cate-active' : 'u-icon-tabBar-cate'"></i>
         <span class="text">分类</span>
       </li>
       <li class="item" :class="{active: $route.path === '/find'}" @click="goTo('/find')">
-        <i class="u-icon" :class="$route.path.includes('/find') ? 'u-icon-tabBar-topic-active' : 'u-icon-tabBar-topic'"></i>
+        <i class="u-icon"
+           :class="$route.path.includes('/find') ? 'u-icon-tabBar-topic-active' : 'u-icon-tabBar-topic'"></i>
         <span class="text">识物</span>
       </li>
-      <li class="item" :class="{active: $route.path === '/cart'}"  @click="goTo('/cart')">
+      <li class="item" :class="{active: $route.path === '/cart'}" @click="goTo('/cart')">
         <i class="u-icon" :class="$route.path === '/cart' ? 'u-icon-tabBar-cart-active' : 'u-icon-tabBar-cart'"></i>
         <span class="text">购物车</span>
       </li>
-      <li class="item" :class="{active: $route.path === '/personal'}"  @click="goTo('/personal')">
-        <i class="u-icon " :class="$router.path ==='personal'?'u-icon-tabBar-ucenter-active':'u-icon-tabBar-ucenter'"></i>
+      <li class="item" @click="goTo('/personal')">
+        <i class="u-icon "
+           :class="$router.path ==='personal'?'u-icon-tabBar-ucenter-active':'u-icon-tabBar-ucenter'"></i>
         <span class="text">个人</span>
       </li>
     </ul>
@@ -28,9 +30,9 @@
 
 <script>
   export default {
-    name: "FooterGuide",
+    name: 'FooterGuide',
     methods: {
-      goTo(path){
+      goTo (path) {
         this.$router.replace(path)
       },
 
@@ -55,7 +57,7 @@
       .item
         flex 1
         text-align center
-        margin-top  .2rem
+        margin-top .2rem
         &.active
           color #b4282d
         .u-icon
@@ -88,7 +90,6 @@
           display block
           font-size .32rem
           margin-top -.2rem
-
 
 
 </style>

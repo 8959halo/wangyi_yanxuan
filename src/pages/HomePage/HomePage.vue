@@ -12,7 +12,7 @@
         <div class="tab active">
           <span class="item">推荐</span>
         </div>
-        <div class="tab" @click="getActive()">
+        <div class="tab">
           <span class="item">居家生活</span>
         </div>
         <div class="tab">
@@ -22,33 +22,36 @@
           <span class="item">美食酒水</span>
         </div>
         <!--全部频道-->
-        <div class="allNav" v-show="isShowAllNav">
-          <span>全部频道</span>
-          <i class="iconfont icon-shouqishangjiantou-"></i>
-          <a href="javascript:;">
-            <span>1231</span>
-          </a>
-          <a href="javascript:;">
-            <span>1231</span>
-          </a>
-          <a href="javascript:;">
-            <span>1231</span>
-          </a>
-          <a href="javascript:;">
-            <span>1231</span>
-          </a>
-          <a href="javascript:;">
-            <span>1231</span>
-          </a>
-          <a href="javascript:;">
-            <span>1231</span>
-          </a>
-          <a href="javascript:;">
-            <span>1231</span>
-          </a>
-          <a href="javascript:;">
-            <span>1231</span>
-          </a>
+        <div class="allNav">
+          <div class="iconfont icon-xiajiantou" @click="toggleShow"></div>
+          <div class="allNavList" v-show="isShowAllNav">
+            <span>全部频道</span>
+            <i class="iconfont icon-shouqishangjiantou-"></i>
+            <a href="javascript:;">
+              <span>1231</span>
+            </a>
+            <a href="javascript:;">
+              <span>1231</span>
+            </a>
+            <a href="javascript:;">
+              <span>1231</span>
+            </a>
+            <a href="javascript:;">
+              <span>1231</span>
+            </a>
+            <a href="javascript:;">
+              <span>1231</span>
+            </a>
+            <a href="javascript:;">
+              <span>1231</span>
+            </a>
+            <a href="javascript:;">
+              <span>1231</span>
+            </a>
+            <a href="javascript:;">
+              <span>1231</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -106,47 +109,21 @@
     <!--商品导航-->
     <div class="categorysNav">
       <ul class="Categorys">
-        <li>
-          <img src="http://yanxuan.nosdn.127.net/698205eb5a605f0f7c27aebadacd2317.png">
-          <span>123</span>
-        </li>
-        <li>
-          <img src="http://yanxuan.nosdn.127.net/698205eb5a605f0f7c27aebadacd2317.png">
-          <span>123</span>
-        </li>
-        <li>
-          <img src="http://yanxuan.nosdn.127.net/698205eb5a605f0f7c27aebadacd2317.png">
-          <span>123</span>
-        </li>
-        <li>
-          <img src="http://yanxuan.nosdn.127.net/698205eb5a605f0f7c27aebadacd2317.png">
-          <span>123</span>
-        </li>
-        <li>
-          <img src="http://yanxuan.nosdn.127.net/698205eb5a605f0f7c27aebadacd2317.png">
-          <span>123</span>
-        </li>
-        <li>
-          <img src="http://yanxuan.nosdn.127.net/698205eb5a605f0f7c27aebadacd2317.png">
-          <span>123</span>
-        </li>
-        <li>
-          <img src="http://yanxuan.nosdn.127.net/698205eb5a605f0f7c27aebadacd2317.png">
-          <span>123</span>
-        </li>
-        <li>
-          <img src="http://yanxuan.nosdn.127.net/698205eb5a605f0f7c27aebadacd2317.png">
-          <span>123</span>
-        </li>
-        <li>
-          <img src="http://yanxuan.nosdn.127.net/698205eb5a605f0f7c27aebadacd2317.png">
-          <span>123</span>
-        </li>
-        <li>
-          <img src="http://yanxuan.nosdn.127.net/698205eb5a605f0f7c27aebadacd2317.png">
-          <span>123</span>
+        <li v-for="(category, index) in categories" :key="index">
+
+          <img src="">
+
+          <span>{{category.name}}</span>
+
         </li>
       </ul>
+    </div>
+    <!--人气推荐-->
+    <div class="mostLike">
+      <div class="header">
+        <span class="title">人气推荐</span>
+        <span class="more">更多></span>
+      </div>
     </div>
     <!--老板推荐-->
     <div class="bossRecommen">
@@ -161,24 +138,24 @@
           <img src="http://yanxuan.nosdn.127.net/e4092e675f895740f8e079980e8ebe63.png">
           <img src="http://yanxuan.nosdn.127.net/6725890e905c4d51e333485f3a934192.png">
         </li>
-        <li class="list">
-          <div class="title">新品销售榜</div>
-          <div class="desc">好物抢先体验</div>
-          <img src="http://yanxuan.nosdn.127.net/780b2fc0c98fac7b2862a8a111ee615f.png">
-          <img src="http://yanxuan.nosdn.127.net/77bf1ff658f8557391f1b3204cb8ab3b.png" alt="">
-        </li>
-        <li class="list">
-          <div class="title">严选线下点首家</div>
-          <div class="desc">体验选式美学</div>
-          <img src="http://yanxuan.nosdn.127.net/a07c82f8b26a4ed42b1d697eb9ea418f.png">
-          <img src="http://yanxuan.nosdn.127.net/d1d2488296c5e75967ebfbdf8a36d6cc.png">
-        </li>
-        <li class="list">
-          <div class="title">12月必买好物</div>
-          <div class="desc">冬日小确幸指南</div>
-          <img src="http://yanxuan.nosdn.127.net/362a8249b48d91d99604680b5471b507.png">
-          <img src="http://yanxuan.nosdn.127.net/e1d2f0b529eddc9b645997d0f16e9aca.png">
-        </li>
+        <!--<li class="list">-->
+          <!--<div class="title">新品销售榜</div>-->
+          <!--<div class="desc">好物抢先体验</div>-->
+          <!--<img src="http://yanxuan.nosdn.127.net/780b2fc0c98fac7b2862a8a111ee615f.png">-->
+          <!--<img src="http://yanxuan.nosdn.127.net/77bf1ff658f8557391f1b3204cb8ab3b.png" alt="">-->
+        <!--</li>-->
+        <!--<li class="list">-->
+          <!--<div class="title">严选线下点首家</div>-->
+          <!--<div class="desc">体验选式美学</div>-->
+          <!--<img src="http://yanxuan.nosdn.127.net/a07c82f8b26a4ed42b1d697eb9ea418f.png">-->
+          <!--<img src="http://yanxuan.nosdn.127.net/d1d2488296c5e75967ebfbdf8a36d6cc.png">-->
+        <!--</li>-->
+        <!--<li class="list">-->
+          <!--<div class="title">12月必买好物</div>-->
+          <!--<div class="desc">冬日小确幸指南</div>-->
+          <!--<img src="http://yanxuan.nosdn.127.net/362a8249b48d91d99604680b5471b507.png">-->
+          <!--<img src="http://yanxuan.nosdn.127.net/e1d2f0b529eddc9b645997d0f16e9aca.png">-->
+        <!--</li>-->
       </ul>
     </div>
     <!--限时购-->
@@ -195,35 +172,11 @@
         <span class="more">更多></span>
       </div>
       <ul class="lists">
-        <li class="item">
-          <img src="http://yanxuan.nosdn.127.net/ff90462e4d7c7edd01a25f8932e1800f.png">
-          <span class="price">$111</span>
-          <span class="oldPrice">$222</span>
-        </li>
-        <li class="item">
-          <img src="http://yanxuan.nosdn.127.net/fe06530dd35ec5062c1ecaf82d4812d6.png">
-          <span class="price">$111</span>
-          <span class="oldPrice">$222</span>
-        </li>
-        <li class="item">
-          <img src="http://yanxuan.nosdn.127.net/de34d4d8407709f2edd88597d66fcfcb.png">
-          <span class="price">$111</span>
-          <span class="oldPrice">$222</span>
-        </li>
-        <li class="item">
-          <img src="http://yanxuan.nosdn.127.net/da9c2255909d0d1fe5cabff6d93c03db.png">
-          <span class="price">$111</span>
-          <span class="oldPrice">$222</span>
-        </li>
-        <li class="item">
-          <img src="http://yanxuan.nosdn.127.net/8b7bde0b395e2bda54505cf4c3b7880b.png">
-          <span class="price">$111</span>
-          <span class="oldPrice">$222</span>
-        </li>
-        <li class="item">
-          <img src="http://yanxuan.nosdn.127.net/2adbaae8403ac4dcac56ebf2ff1a5116.png">
-          <span class="price">$111</span>
-          <span class="oldPrice">$222</span>
+        <!--v-for="(item,index) in categories.flashSaleModule.itemList" :key="index"-->
+        <li class="item" >
+          <img src="">
+          <span class="price">$123</span>
+          <span class="oldPrice">$21313</span>
         </li>
       </ul>
     </div>
@@ -278,6 +231,84 @@
         </li>
       </ul>
     </div>
+    <!--私人订制-->
+    <!--<div class="intimate">-->
+    <!--<span class="title">私人订制</span>-->
+    <!--<div class="intimate_swiper">-->
+    <!--<div class="swiper-container">-->
+    <!--<div class="swiper-wrapper">-->
+    <!--<div class="swiper-slide">-->
+    <!--<div class="intimate_item">-->
+    <!--<img src="">-->
+    <!--<div class="text">-->
+    <!--<span class="desc">男士优质小牛皮手工正装鞋</span>-->
+    <!--<span class="price">￥659</span>-->
+    <!--<div class="text">-->
+    <!--<span class="desc">男士优质小牛皮手工正装鞋</span>-->
+    <!--<span class="price">￥659</span>-->
+    <!--<div class="text">-->
+    <!--<span class="desc">男士优质小牛皮手工正装鞋</span>-->
+    <!--<span class="price">￥659</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="swiper-slide">Slide 2</div>-->
+    <!--<div class="swiper-slide">Slide 3</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="swiper-slide">-->
+    <!--<div class="intimate_item">-->
+    <!--<img src="">-->
+    <!--<div class="text">-->
+    <!--<span class="desc">男士优质小牛皮手工正装鞋</span>-->
+    <!--<span class="price">￥659</span>-->
+    <!--<div class="text">-->
+    <!--<span class="desc">男士优质小牛皮手工正装鞋</span>-->
+    <!--<span class="price">￥659</span>-->
+    <!--<div class="text">-->
+    <!--<span class="desc">男士优质小牛皮手工正装鞋</span>-->
+    <!--<span class="price">￥659</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="swiper-slide">Slide 2</div>-->
+    <!--<div class="swiper-slide">Slide 3</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="swiper-slide">-->
+    <!--<div class="intimate_item">-->
+    <!--<img src="">-->
+    <!--<div class="text">-->
+    <!--<span class="desc">男士优质小牛皮手工正装鞋</span>-->
+    <!--<span class="price">￥659</span>-->
+    <!--<div class="text">-->
+    <!--<span class="desc">男士优质小牛皮手工正装鞋</span>-->
+    <!--<span class="price">￥659</span>-->
+    <!--<div class="text">-->
+    <!--<span class="desc">男士优质小牛皮手工正装鞋</span>-->
+    <!--<span class="price">￥659</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="swiper-slide">Slide 2</div>-->
+    <!--<div class="swiper-slide">Slide 3</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="swiper-slide">-->
+    <!--<div class="intimate_item">-->
+    <!--<img src="">-->
+    <!--<div class="text">-->
+    <!--<span class="desc">男士优质小牛皮手工正装鞋</span>-->
+    <!--<span class="price">￥659</span>-->
+    <!--<div class="text">-->
+    <!--<span class="desc">男士优质小牛皮手工正装鞋</span>-->
+    <!--<span class="price">￥659</span>-->
+    <!--<div class="text">-->
+    <!--<span class="desc">男士优质小牛皮手工正装鞋</span>-->
+    <!--<span class="price">￥659</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
     <!--私人订制-->
     <!--<div class="intimate">-->
       <!--<span class="title">私人订制</span>-->
@@ -374,23 +405,40 @@
 <script>
   import Swiper from 'swiper'
   import '../../../node_modules/swiper/dist/css/swiper.min.css'
+  import {mapState} from 'vuex'
 
   export default {
     name: "HomePage",
     data() {
-      isShowAllNav = false
+      return{
+        //全部导航是否显示
+        isShowAllNav:false
+      }
     },
-    methods: {},
+    computed:{
+      ...mapState({
+        categories: state => state.msite.categories
+      })
+    },
+    methods: {
+      toggleShow(){
+        this.isShowAllNav = !this.isShowAllNav
+      }
+    },
+
     mounted() {
-      var swiper = new Swiper('.swiper-container', {
+      this.$store.dispatch('getCategory')
+      new Swiper('.swiper-container', {
         loop: true,
 
         // 如果需要分页器
         pagination: {
           el: '.swiper-pagination',
         },
+
       })
-    }
+    },
+
   }
 </script>
 
@@ -436,16 +484,17 @@
         display flex
         font-size .38rem
         margin-top .2rem
-        div:nth-child(5)
-          color red
-          margin-left 25px
+
         .tab
           padding .25rem
           color: #333
-
         .active
           color #b4282d
           border-bottom #b4282d solid .1rem
+        .icon-xiajiantou
+          font-size 35px
+          margin 15px 0 0 65px
+
 
   .server
     display flex
@@ -453,7 +502,7 @@
     width 100%
     padding 0.25rem 0
     i
-      font-size 12px
+      font-size 25px
       color #b4282d
     span
       color #b4282d
@@ -535,6 +584,13 @@
           white-space: normal;
         .price
           color: #b4282d
+  .mostLike
+    width: 100%;
+    line-height: 0.53333rem;
+    background: #fff;
+    overflow: hidden;
+    padding: 0 .2rem;
+    font-size: .42667rem;
 
   /*
   .intimate

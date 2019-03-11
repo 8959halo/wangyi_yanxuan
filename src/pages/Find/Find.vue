@@ -1,12 +1,12 @@
 <template>
 
-    <div>Find</div>
+  <div>Find</div>
 </template>
 
 <script>
-    export default {
-        name: "Category"
-    }
+  export default {
+    name: "Find"
+  }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
