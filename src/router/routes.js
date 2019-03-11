@@ -27,7 +27,16 @@ export default [
     component: Cate,
     meta: {
       showFoot: true
-    }
+    },
+    children:[
+      {
+        path:'/cate/cateList',
+        component:CateList,
+        meta: {
+          showFoot: true
+        },
+      }
+    ]
   },
   {
     path: '/',

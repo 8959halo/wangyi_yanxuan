@@ -5,7 +5,7 @@ import goods_data from './cateList.json'
 
 Mock.mock( '/', {
   code: 0,
-  data: goods_data
+  data: shouye_data
 });
 Mock.mock( '/category', {
   code: 0,

@@ -15,7 +15,7 @@ const mutations = {
 
 const actions = {
   // 获取分类列表数据
-  async getCateList ({commit}) {
+  async getCateList ({commit} , cb) {
     // 发送ajax
     const result = await reqCateList();
     console.log(result);
@@ -23,6 +23,7 @@ const actions = {
     // 根据返回的数据调用mutations更改数据
     if (result.code === 0) {
       commit(RECRIVE_CATELIST, {cateList})
+      typeof cb === 'function' && cb()
     }
   }
 

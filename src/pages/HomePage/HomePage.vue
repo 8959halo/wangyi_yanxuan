@@ -107,13 +107,11 @@
       </div>
     </div>
     <!--商品导航-->
-    <div class="categorysNav">
+    <div class="categorysNav" v-if="categories.kingKongModule">
       <ul class="Categorys">
-        <li v-for="(category, index) in categories" :key="index">
-
-          <img src="">
-
-          <span>{{category.name}}</span>
+        <li v-for="(item, index) in categories.kingKongModule.kingKongList" :key="index">
+          <img :src="item.picUrl">
+          <span>{{item.text}}</span>
 
         </li>
       </ul>
@@ -132,11 +130,11 @@
     <!--购物榜单-->
     <div class="shopList">
       <ul class="lists">
-        <li class="list">
-          <div class="title">实时好评榜</div>
-          <div class="desc">精选优质好物</div>
-          <img src="http://yanxuan.nosdn.127.net/e4092e675f895740f8e079980e8ebe63.png">
-          <img src="http://yanxuan.nosdn.127.net/6725890e905c4d51e333485f3a934192.png">
+        <li class="list" v-for="(item,index) in categories.sceneLightShoppingGuideModule" :key="index">
+          <div class="desc">{{item.styleItem.desc}}</div>
+          <div class="title">{{item .styleItem.title}}</div>
+          <img :src="item.styleItem.picUrlList[0]">
+          <img :src="item.styleItem.picUrlList[1]">
         </li>
         <!--<li class="list">-->
           <!--<div class="title">新品销售榜</div>-->
@@ -171,12 +169,11 @@
         </div>
         <span class="more">更多></span>
       </div>
-      <ul class="lists">
-        <!--v-for="(item,index) in categories.flashSaleModule.itemList" :key="index"-->
-        <li class="item" >
-          <img src="">
-          <span class="price">$123</span>
-          <span class="oldPrice">$21313</span>
+      <ul class="lists" v-if="categories.flashSaleModule">
+        <li class="item" v-for="(item,index) in categories.flashSaleModule.itemList" :key="index">
+          <img :src="item.picUrl">
+          <span class="price">${{item.activityPrice}}</span>
+          <span class="oldPrice">${{item.originPrice}}</span>
         </li>
       </ul>
     </div>
@@ -187,43 +184,8 @@
         <span class="more">更多></span>
       </div>
       <ul class="lists">
-        <li class="item">
-          <img src="http://yanxuan.nosdn.127.net/eb28be79a5b5e4f8ee7b6a3a9641dae5.png">
-          <div class="text">
-            <span class="desc">xxxxx</span>
-            <span class="price">$1231</span>
-          </div>
-        </li>
-        <li class="item">
-          <img src="http://yanxuan.nosdn.127.net/6ca5da68fa4e87086126f9a124442da9.jpg">
-          <div class="text">
-            <span class="desc">xxxxx</span>
-            <span class="price">$1231</span>
-          </div>
-        </li>
-        <li class="item">
-          <img src="http://yanxuan.nosdn.127.net/bf216b5af1dc8cdb5a70e87b8271028c.png">
-          <div class="text">
-            <span class="desc">xxxxx</span>
-            <span class="price">$1231</span>
-          </div>
-        </li>
-        <li class="item">
-          <img src="http://yanxuan.nosdn.127.net/5351c9bffc8d8c17d7079428c5dd8a9e.jpg">
-          <div class="text">
-            <span class="desc">xxxxx</span>
-            <span class="price">$1231</span>
-          </div>
-        </li>
-        <li class="item">
-          <img src="http://yanxuan.nosdn.127.net/85b1d637ae9be7518d4616ec40ae5741.png">
-          <div class="text">
-            <span class="desc">xxxxx</span>
-            <span class="price">$1231</span>
-          </div>
-        </li>
-        <li class="item">
-          <img src="http://yanxuan.nosdn.127.net/5b874370ef8f63ee41865bbee4de2890.jpg">
+        <li class="item" v-for="(item,index) in categories.newItemList" :key="index">
+          <img :src="item.primaryPicUrl">
           <div class="text">
             <span class="desc">xxxxx</span>
             <span class="price">$1231</span>

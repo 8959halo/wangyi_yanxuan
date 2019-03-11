@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 分类头部 -->
-    <div class="header-wrap">
+    <div class="headerContainer">
       <div class="search">
         <div class="search-icon"></div>
         <div class="search-info">搜索商品, 共19999款好物</div>
@@ -10,16 +10,18 @@
 
     <!-- 分类内容 -->
     <div class="content">
-      <div class="cateListNav-wrapper">
+      <div class="cateListNavContainer">
         <ul class="cateListNav">
-          <li class="cateListItem" v-for="(item,index) in cateList.categoryL1List" :key="index">
+          <li class="cateListItem" v-for="(item,index) in cateList.categoryL1List" :key="index"
+              :class="item.id === Number($route.query.categoryId) ? 'active' : ''">
             <router-link :to="`/cate/cateList?categoryId=${item.id}`">
               <span>{{item.name}}</span>
             </router-link>
           </li>
         </ul>
       </div>
-      <div class="cateListContent-wrapper">
+      <div class="cateListContentContainer">
+        <RouterView/>
       </div>
     </div>
   </div>
@@ -43,7 +45,7 @@
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   @import "../../common/stylus/mixins.styl"
 
-  .header-wrap
+  .headerContainer
     bottom-border-1px(#d9d9d9)
     width: 100%
     position: fixed !important;
@@ -82,7 +84,7 @@
   .content
     padding-top 1rem
 
-    .cateListNav-wrapper
+    .cateListNavContainer
       right-border-1px(#d9d9d9)
       float left
       width: 2.16rem
@@ -121,7 +123,7 @@
               width: .08rem;
               background-color: #ab2b2b;
 
-    .cateListContent-wrapper
+    .cateListContentContainer
       margin-left: 2.16rem;
       padding: .4rem .4rem .28rem;
 

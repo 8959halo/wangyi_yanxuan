@@ -2,15 +2,15 @@
   <div class="scroll-wrapper" v-if="categoryL2">
     <div class="scroll">
       <div class="banner">
-        <img src="">
+        <img :src="categoryL2.wapBannerUrl">
       </div>
       <div class="cateList">
         <ul class="list">
-          <li class="item" v-for="(subCate, index) in categoryL2.subCateList" :key="index">
+          <li class="item" v-for="(item, index) in categoryL2.subCateList" :key="index">
             <div class="img-wrapper">
-              <img v-lazy="subCate.wapBannerUrl" alt="">
+              <img :src="item.wapBannerUrl" alt="">
             </div>
-            <div class="name">{{subCate.name}}</div>
+            <div class="name">{{item.name}}</div>
           </li>
         </ul>
       </div>
@@ -59,7 +59,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
- /* .scroll-wrapper
+  .scroll-wrapper
     height 15rem
     .banner
       img
@@ -101,5 +101,5 @@
             display: block;
             display: -webkit-box;
             -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;*/
+            -webkit-box-orient: vertical;
 </style>
