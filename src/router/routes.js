@@ -3,8 +3,12 @@ import Cart from '../pages/Cart/Cart'
 import Cate from '../pages/Cate/Cate'
 import CateList from '../pages/Cate/CateList'
 import Find from '../pages/Find/Find'
+import Tab from '../pages/Find/Tab'
 import HomePage from '../pages/HomePage/HomePage'
 import Personal from '../pages/Personal/Personal'
+import Search from '../pages/Search/Search'
+import Login_iphone from '../pages/Personal/Login_iphone'
+import Login_email from '../pages/Personal/Login_email'
 
 
 export default [
@@ -16,6 +20,10 @@ export default [
     }
   },
   {
+    path:'/search',
+    component:Search
+  },
+  {
     path: '/cart',
     component: Cart,
     meta: {
@@ -25,6 +33,7 @@ export default [
   {
     path: '/cate',
     component: Cate,
+    redirect:'./cate/cateList',
     meta: {
       showFoot: true
     },
@@ -48,13 +57,37 @@ export default [
   {
     path: '/personal',
     component: Personal,
+    children:[
+      {
+        path:'/personal/iphone',
+        component:Login_iphone,
+        // meta: {
+        //   showFoot: true
+        // },
+      },
+      {
+        path:'/personal/email',
+        component:Login_email
+      }
+    ]
   },
   {
     path: '/find',
     component: Find,
+
+    redirect:'/find/tab/id',
     meta: {
       showFoot: true
-    }
+    },
+    children: [
+      {
+        path:'/find/tab/:id',
+        component:Tab,
+        meta: {
+          showFoot: true
+        },
+      }
+    ]
   }
 
 ]

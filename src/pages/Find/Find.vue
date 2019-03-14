@@ -5,7 +5,7 @@
       <div class="header">
         <div class="header-left">
           <div class="goHome">
-            <i class="iconfont icon-shouye"></i>
+            <i class="iconfont icon-shouye" @click="goTo('/')"></i>
           </div>
         </div>
 
@@ -15,16 +15,20 @@
         </div>
         <div class="header-right">
           <div class="goCart" >
-            <i class="iconfont icon-qicheqianlian-"></i>
+            <i class="iconfont icon-qicheqianlian-" @click="goTo('/cart')"></i>
           </div>
           <div class="goSearch" >
-            <i class="iconfont icon-icon-test"></i>
+            <i class="iconfont icon-icon-test" @click="goTo('/search')"></i>
           </div>
         </div>
       </div>
       <div class="headerNavContainer">
         <ul class="headerNav">
-          <li class="headerNavItem">
+
+          <li class="headerNavItem" v-for="(item,index) in tabs " :key="index" >
+            <router-link :to="`/find/tab/${index}`">
+              <span>{{item.tabName}}</span>
+            </router-link>
 
           </li>
         </ul>
@@ -32,12 +36,32 @@
     </div>
     <!--识物界面主体内容-->
     <div class="topic-content">
+      <router-view/>
     </div>
   </div>
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
+    methods:{
+      goTo(path){
+        this.$router.replace(path)
+      }
+    },
+    computed:{
+      ...mapState({
+        tabs: state => state.find.tabs,
+        recommendData: state => state.find.recommendData,
+        autoData : state => state.find.autoData
+      })
+    },
+    mounted(){
+      this.$store.dispatch('getTabs')
+      this.$store.dispatch('getRecommendData')
+      this.$store.dispatch('getAutoData')
+    },
+
 
   }
 </script>
@@ -54,13 +78,13 @@
     // 头部
     .header
       width: 100%;
-      height: 1rem
+      height: 75px
       position: fixed !important;
       left: 0;
       top: 0;
       z-index: 100;
       background-color: #fafafa;
-      border-bottom: .01rem solid #d9d9d9;
+      border-bottom: .075px solid #d9d9d9;
       -webkit-box-sizing: border-box;
       margin: auto;
       overflow: hidden;
@@ -68,8 +92,8 @@
 
       .header-left
         float: left;
-        height: 1rem;
-        line-height 1rem
+        height: 75px;
+        line-height 75px
         padding-right: .02rem;
         .goHome
           float: left;
@@ -82,7 +106,7 @@
         position: absolute;
         width: 3.2rem;
         height: 100%;
-        line-height: 1rem;
+        line-height: 75px;
         text-align: center;
         left: 50%;
         top: 0;
@@ -105,8 +129,8 @@
 
       .header-right
         float: right;
-        height: 1rem;
-        line-height 1rem
+        height: 75px;
+        line-height 75px
         padding-right: .02rem;
 
         .goCart
@@ -128,14 +152,14 @@
     // 头部导航
     .headerNavContainer
       width 100%
-      height: 1rem;
-      line-height 1rem
-      margin-top 1rem
+      height: 75px;
+      line-height 75px
+      margin-top 75px
       background: #fafafa;
-      border-bottom: .01rem solid #d9d9d9;
+      border-bottom: .075px solid #d9d9d9;
       .headerNav
         display flex
-        height: 1rem;
+        height: 75px;
         .headerNavItem
           flex 1
           font-size: .36rem;

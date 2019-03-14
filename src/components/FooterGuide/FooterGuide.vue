@@ -5,11 +5,11 @@
         <i class="u-icon" :class="$route.path === '/' ? 'u-icon-tabBar-index-active' : 'u-icon-tabBar-index'"></i>
         <span class="text">首页</span>
       </li>
-      <li class="item" :class="{active: $route.path ==='/cate'}" @click="goTo('/cate')">
-        <i class="u-icon" :class="$route.path ==='/cate' ? 'u-icon-tabBar-cate-active' : 'u-icon-tabBar-cate'"></i>
+      <li class="item" :class="{active: $route.path.includes ('/cate')}" @click="goTo('/cate')">
+        <i class="u-icon" :class="$route.path.includes('/cate') ? 'u-icon-tabBar-cate-active' : 'u-icon-tabBar-cate'"></i>
         <span class="text">分类</span>
       </li>
-      <li class="item" :class="{active: $route.path === '/find'}" @click="goTo('/find')">
+      <li class="item" :class="{active: $route.path.includes('/find') }" @click="goTo('/find')">
         <i class="u-icon"
            :class="$route.path.includes('/find') ? 'u-icon-tabBar-topic-active' : 'u-icon-tabBar-topic'"></i>
         <span class="text">识物</span>

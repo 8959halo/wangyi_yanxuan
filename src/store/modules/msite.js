@@ -1,13 +1,13 @@
 // 首页状态管理模块
 import {reqHomePageData} from '../../api'
-import {RECRIVE_CATEGORIES} from '../mutation-types'
+import {RECEIVE_CATEGORIES} from '../mutation-types'
 
 const state = {
   categories: []
 };
 
 const mutations = {
-  [RECRIVE_CATEGORIES] (state,{categories}) {
+  [RECEIVE_CATEGORIES] (state,{categories}) {
     // mutation直接操作状态
     state.categories = categories
   }
@@ -21,7 +21,7 @@ const actions = {
     const categories = result.data
     // 根据返回的数据调用mutations更改数据
     if (result.code === 0) {
-      commit(RECRIVE_CATEGORIES, {categories})
+      commit(RECEIVE_CATEGORIES, {categories})
     }
     // typeof cb === 'function' && cb()
   }

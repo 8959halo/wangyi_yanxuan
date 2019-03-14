@@ -1,7 +1,7 @@
 import Mock from 'mockjs'
 import shouye_data from './shouye_data.json'
 import classify_data from './fenlei_zhuanqu.json'
-import goods_data from './cateList.json'
+// import goods_data from './cateList.json'
 
 Mock.mock( '/', {
   code: 0,

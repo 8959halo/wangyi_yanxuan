@@ -5,9 +5,9 @@
       <h1 class="logo"></h1>
       <div class="topSearch">
         <i class="iconfont icon-icon-test"></i>
-        <span class="content">搜索商品, 共19966款好物</span>
+        <span class="content" @click="goTo('/search')">搜索商品, 共19966款好物</span>
       </div>
-      <div class="searchButton">登录</div>
+      <div class="searchButton" @click="goTo('personal')">登录</div>
       <div class="tabs">
         <div class="tab active">
           <span class="item">推荐</span>
@@ -385,6 +385,9 @@
     methods: {
       toggleShow(){
         this.isShowAllNav = !this.isShowAllNav
+      },
+      goTo(path){
+        this.$router.replace(path)
       }
     },
 

@@ -8,22 +8,22 @@
       <div class="logo"></div>
       <div class="headerRight">
         <div class="cart">
-          <i class="iconfont icon-qicheqianlian-"></i>
+          <i class="iconfont icon-qicheqianlian-" @click="$router.replace('/cart')"></i>
         </div>
         <div class="search">
-          <i class="iconfont icon-icon-test"></i>
+          <i class="iconfont icon-icon-test" @click="$router.replace('/search')"></i>
         </div>
       </div>
     </div>
     <!--Content-->
-    <div class="content">
+    <div class="content" v-if="$route.path==='/personal'">
       <div class="content-logo">
         <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
       </div>
       <!--登录方式-->
       <div class="login">
         <!--手机登录-->
-        <div class="login_iphone">
+        <div class="login_iphone" @click="$router.replace('/personal/iphone')">
           <i class="iconfont icon-shouji"></i>
           <span >手机号码登录</span>
         </div>
@@ -49,6 +49,10 @@
           <i class="iconfont icon-weibo"></i>
           <span>微博</span>
         </div>
+
+        <!--<div class="Content" >-->
+          <!---->
+        <!--</div>-->
       </div>
     </div>
 
@@ -57,7 +61,6 @@
 </template>
 
 <script>
-  // document.body.parentNode.style.overflowY = "hidden";//隐藏纵向滚动条
 
   export default {
         name: "Personal",
